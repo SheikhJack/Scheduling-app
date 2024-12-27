@@ -2,6 +2,8 @@
  * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
+import LinearGradient from "react-native-linear-gradient";
+
 
 const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
@@ -22,5 +24,10 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
+  },
+  LinearGradient: {
+    colors: ['rgba(62,165,213,1)', 'rgba(203,201,232,1)'], // Gradient colors
+    start: { x: 0.0, y: 0.0 }, // Gradient start point
+    end: { x: 0.0, y: 1.0 }, // Gradient end point
   },
 };
