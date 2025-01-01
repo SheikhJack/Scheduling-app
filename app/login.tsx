@@ -4,16 +4,17 @@ import { Image } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useNavigation } from 'expo-router';
 import { Link } from 'expo-router';
+import { MaterialIcons } from '@expo/vector-icons';
 
 interface RootStackParamList {
   navigate(arg0: string): void;
-  login: undefined; 
+  login: undefined;
   home: undefined;
   href: undefined;
 }
 
 interface loginProps {
-  login: string; 
+  login: string;
   href: string;
 }
 
@@ -30,15 +31,23 @@ const login: React.FC<loginProps> = () => {
       </View>
       <Text style={styles.LoginText}>LOGIN TO CONTINUE</Text>
       <View style={styles.inputDiv}>
-        <TextInput
-          placeholder='Username'
-          style={styles.input1}
-        />
-        <TextInput
-          placeholder='Password'
-          secureTextEntry
-          style={styles.input}
-        />
+        <View style={styles.inputIconContainer}>
+          <MaterialIcons name='person' size={25} style={styles.person} />
+          <TextInput
+            placeholder='Username'
+            style={styles.input1}
+            underlineColorAndroid="transparent"
+          />
+        </View>
+        <View style={styles.inputIconContainer}>
+          <MaterialIcons name='key' size={25} style={styles.person} />
+          <TextInput
+            placeholder='Password'
+            style={styles.input1}
+            underlineColorAndroid="transparent"
+            secureTextEntry
+          />
+        </View>
       </View>
       <View style={styles.tickInputDiv}>
         <View style={styles.Checkbox}>
@@ -53,11 +62,11 @@ const login: React.FC<loginProps> = () => {
       </View>
       <Pressable style={styles.button}
       >
-        <Link href= '/(tabs)' style={styles.buttonText}>LOGIN</Link>
+        <Link href='/(tabs)' style={styles.buttonText}>LOGIN</Link>
       </Pressable>
       <Pressable
         onPress={() => navigation.navigate('createAccount')}
-        >
+      >
         <Text style={styles.createAccText}>Have an account?{''}{''}
           <Text style={styles.defaultText}>Create An Account</Text>
         </Text>
@@ -102,15 +111,14 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   input1: {
-    marginBottom: 33,
-    backgroundColor: '#D9D9D9',
-    width: 394,
+    width: 384,
     height: 46,
-    borderColor: '#e8e8e8',
-    borderWidth: 2,
-    borderRadius: 20,
+    borderColor: 'transparent',
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
     paddingHorizontal: 10,
     marginVertical: 5,
+
   },
   Checkbox: {
     flex: 1,
@@ -169,6 +177,25 @@ const styles = StyleSheet.create({
   defaultText: {
     fontWeight: 'bold',
     color: "#FFFFFF"
-  }
+  },
+  key: {
 
-})
+  },
+  person: {
+    color: 'grey'
+  },
+  inputIconContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 33,
+    backgroundColor: '#D9D9D9',
+    width: 394,
+    height: 46,
+    borderColor: '#e8e8e8',
+    borderWidth: 2,
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    marginVertical: 5,
+  }
+},
+)

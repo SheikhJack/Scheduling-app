@@ -20,6 +20,7 @@ const MAPPING = {
   'person-circle-outline' : 'person',
   'book.fill' : 'book',
   'wallet.pass.fill' : 'payments',
+  'menucard.fill' : 'menu'
   
 } as Partial<
   Record<
