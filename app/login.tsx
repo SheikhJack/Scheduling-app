@@ -50,8 +50,8 @@ const login: React.FC<loginProps> = () => {
         </View>
       </View>
       <View style={styles.tickInputDiv}>
-        <View style={styles.Checkbox}>
-          <BouncyCheckbox
+      <View style={styles.Checkbox}>
+        <BouncyCheckbox
             unFillColor="#FFFFFF"
             iconStyle={{ borderColor: "red" }}
             innerIconStyle={{ borderWidth: 2 }}
@@ -91,13 +91,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderBottomRightRadius: '45%',
     borderBottomLeftRadius: '45%',
-    marginBottom: 93
+    marginBottom: 40
   },
   LoginText: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    marginBottom: 48,
+    marginBottom: 28,
   },
   input: {
     marginBottom: 20,
@@ -129,7 +129,6 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   inputDiv: {
-
   },
   checkboxText: {
     fontSize: 16,
@@ -138,11 +137,12 @@ const styles = StyleSheet.create({
   },
   tickInputDiv: {
     flex: 1,
+
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    margin: 10,
     gap: 65,
-    marginTop: 10,
   },
   rememberMeText: {
     fontSize: 16,
@@ -157,21 +157,22 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#1A526C',
-    height: 66,
+    height: 40,
     width: 295,
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 60
+
   },
   buttonText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
     justifyContent: 'center'
   },
   createAccText: {
-    marginBottom: 150,
+    marginBottom: 100,
     fontWeight: 'bold',
   },
   defaultText: {
@@ -187,9 +188,9 @@ const styles = StyleSheet.create({
   inputIconContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 33,
+    marginBottom: 23,
     backgroundColor: '#D9D9D9',
-    width: 394,
+    width: 330,
     height: 46,
     borderColor: '#e8e8e8',
     borderWidth: 2,

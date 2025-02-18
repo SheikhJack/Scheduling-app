@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   top: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: '40%',
+    height: '33%',
     width: '100%',
     backgroundColor: '#FFFFFF',
     borderBottomRightRadius: '45%',
@@ -99,16 +99,16 @@ const styles = StyleSheet.create({
     marginBottom: 48
   },
   LoginText: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    marginBottom: 38,
+    marginBottom: 28,
   },
   input: {
-    marginBottom: 20,
+    marginBottom: 15,
     backgroundColor: '#D9D9D9',
     width: 394,
-    height: 46,
+    height: 36,
     borderColor: '#e8e8e8',
     borderWidth: 2,
     borderRadius: 20,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   input1: {
     backgroundColor: '#D9D9D9',
-    width: 394,
+    width: 285,
     height: 46,
     marginLeft: 6,
     borderColor: '#e8e8e8',
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
 
   inputDiv: {
-
+    margin: 'auto'
   },
 
 
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#1A526C',
-    height: 66,
+    height: 36,
     width: 295,
     borderRadius: 30,
     justifyContent: 'center',
@@ -155,12 +155,12 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
     justifyContent: 'center'
   },
   createAccText: {
-    marginBottom: 150,
+    marginBottom: 50,
     fontWeight: 'bold',
   },
   defaultText: {
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 25,
     backgroundColor: '#D9D9D9',
-    width: 394,
+    width: 330,
     height: 46,
     borderColor: '#e8e8e8',
     borderWidth: 2,

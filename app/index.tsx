@@ -28,10 +28,10 @@ const Welcome: React.FC<WelcomeProps> = ({login}) => {
       <View style={styles.container}>
         <View style={styles.heading}>
           <View style={styles.circle}>
-            <Image source={require('../assets/images/bus.svg')} style={styles.image} />
+            <Image source={require('../assets/images/torino.png')} style={styles.image}/>
           </View>
         </View>
-        <Text style={styles.welcomeText}>Welcome to I-RANK</Text>
+        <Text style={styles.welcomeText}>WELCOME TO I-RANK</Text>
         <Text style={styles.searchText}>Search for the Safest Destinations</Text>
         <Pressable style={styles.button}
         onPress={() => navigation.navigate('login')}
@@ -49,33 +49,37 @@ export default Welcome
 const styles = StyleSheet.create({
   container: {
     height: '100%',
+    marginTop: 50,
     alignItems: 'center',
     backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);'
   },
   heading: {
     marginTop: 68,
-    marginBottom: 111,
+    marginBottom: 1,
   },
-  circle: {},
+  circle: {
+    marginTop: 50,
+    marginBottom: 50
+  },
   image: {
-    height: 361,
-    width: 368,
+    height: 163,
+    width: 286,
   },
   welcomeText: {
     color: 'white',
     fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 62,
+    marginBottom: 22,
   },
   searchText: {
     color: '0E0E0E',
     fontWeight: 'bold',
     fontSize: 16,
-    marginBottom: 102,
+    marginBottom: 202,
   },
   button: {
     backgroundColor: '#1A526C',
-    height: 66,
+    height: 46,
     width: 295,
     borderRadius: 30,
     justifyContent: 'center', 
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
     justifyContent: 'center'
   }
