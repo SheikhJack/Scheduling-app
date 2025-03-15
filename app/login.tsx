@@ -20,7 +20,7 @@ interface loginProps {
 
 
 
-const login: React.FC<loginProps> = () => {
+const login: React.FC<loginProps> = ({login}) => {
 
   const navigation = useNavigation<RootStackParamList>();
 
@@ -62,13 +62,13 @@ const login: React.FC<loginProps> = () => {
       </View>
       <Pressable style={styles.button}
       >
-        <Link href='/(tabs)' style={styles.buttonText}>LOGIN</Link>
+        <Link href='/home/mybookings' style={styles.buttonText}>LOGIN</Link>
       </Pressable>
       <Pressable
         onPress={() => navigation.navigate('createAccount')}
       >
         <Text style={styles.createAccText}>Have an account?{''}{''}
-          <Text style={styles.defaultText}>Create An Account</Text>
+          <Link href={'/register'} style={styles.defaultText}>Create An Account</Link>
         </Text>
       </Pressable>
     </View>
