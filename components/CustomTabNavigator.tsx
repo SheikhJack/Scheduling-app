@@ -17,7 +17,7 @@ const CustomTab: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation
   const { buildHref } = useLinkBuilder();
 
   return (
-    <View style={{ gap: 20, flexDirection: 'row', position: 'absolute', bottom: 30, alignSelf: 'center', width: "80%", backgroundColor: 'black', borderRadius: 30, justifyContent: 'center', alignItems: 'center', padding: 12, shadowColor: 'grey',shadowOffset: {width: 0, height: 5}, shadowOpacity: 0.3, shadowRadius: 5 }}>
+    <View style={{ gap: 20, flexDirection: 'row', position: 'absolute', bottom: 30, alignSelf: 'center', width: "80%", backgroundColor: '#293846', borderRadius: 30, justifyContent: 'center', alignItems: 'center', padding: 12, shadowColor: 'grey',shadowOffset: {width: 0, height: 5}, shadowOpacity: 0.3, shadowRadius: 5 }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -66,12 +66,11 @@ const CustomTab: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation
   );
   function getIconByRouteName(routeName: string, color: string) {
     switch (routeName) {
+        case "house":
+      return <AntDesign name="home" size={24} color={color} />
       case "profile":
         return <AntDesign name="profile" size={24} color={color} />;
-      case "payments":
-        return <MaterialIcons name="attach-money" size={24} color={color} />;
-      case "mybookings":
-    return <SimpleLineIcons name="notebook" size={24} color={color} />;
+      
     }
   }
 }

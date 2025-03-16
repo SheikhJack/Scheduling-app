@@ -1,24 +1,16 @@
-import React from 'react';
-import { Drawer } from 'expo-router/drawer';
-import { MaterialIcons } from '@expo/vector-icons';
-import { ScrollView, ScrollViewProps, TouchableOpacity } from 'react-native';
-import {  useNavigation, useRouter } from 'expo-router';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { Stack } from 'expo-router'
+import React from 'react'
 
-
-export default function DrawerLayout() {
-
-  const router = useRouter();
-
+function _layout() {
   return (
-    <Drawer>
-      <Drawer.Screen
-        name="home"
-      />
-      <Drawer.Screen
-        name="chat"
-       
-      />
-    </Drawer>
-  );
+    <Stack 
+    screenOptions={{
+        headerShown: false
+    }}
+    >
+        <Stack.Screen  name='index' />
+    </Stack>
+  )
 }
+
+export default _layout

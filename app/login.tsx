@@ -20,7 +20,7 @@ interface loginProps {
 
 
 
-const login: React.FC<loginProps> = ({login}) => {
+const login: React.FC<loginProps> = ({ login }) => {
 
   const navigation = useNavigation<RootStackParamList>();
 
@@ -50,8 +50,8 @@ const login: React.FC<loginProps> = ({login}) => {
         </View>
       </View>
       <View style={styles.tickInputDiv}>
-      <View style={styles.Checkbox}>
-        <BouncyCheckbox
+        <View style={styles.Checkbox}>
+          <BouncyCheckbox
             unFillColor="#FFFFFF"
             iconStyle={{ borderColor: "red" }}
             innerIconStyle={{ borderWidth: 2 }}
@@ -62,13 +62,13 @@ const login: React.FC<loginProps> = ({login}) => {
       </View>
       <Pressable style={styles.button}
       >
-        <Link href='/home/mybookings' style={styles.buttonText}>LOGIN</Link>
+        <Link href='/home/house' style={styles.buttonText}>LOGIN</Link>
       </Pressable>
       <Pressable
         onPress={() => navigation.navigate('createAccount')}
       >
-        <Text style={styles.createAccText}>Have an account?{''}{''}
-          <Link href={'/register'} style={styles.defaultText}>Create An Account</Link>
+        <Text style={styles.createAccText}>Have an account?{""}{""}{""}{""}
+          <Link href={'../components/register'} style={styles.defaultText}>Create An Account</Link>
         </Text>
       </Pressable>
     </View>
@@ -120,34 +120,35 @@ const styles = StyleSheet.create({
     marginVertical: 5,
 
   },
+
   Checkbox: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 7,
-    gap: 2,
+    alignItems:'center',
+    justifyContent: 'center'
   },
+
   inputDiv: {
   },
+
   checkboxText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#FFFFFF'
   },
   tickInputDiv: {
-    flex: 1,
-
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: 10,
     gap: 65,
+
   },
   rememberMeText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    margin: 0,
+    padding:0,
+
   },
   inputContainer: {
     flexDirection: 'row',
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 60
+    marginTop: 40
 
   },
   buttonText: {
@@ -172,10 +173,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   createAccText: {
+    marginTop: 5,
     marginBottom: 100,
     fontWeight: 'bold',
   },
   defaultText: {
+    marginLeft: 5,
     fontWeight: 'bold',
     color: "#FFFFFF"
   },

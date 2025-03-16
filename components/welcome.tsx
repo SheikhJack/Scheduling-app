@@ -60,7 +60,7 @@ import {
       height: '100%',
       //marginTop: 50,
       alignItems: 'center',
-      backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);'
+      backgroundColor: 'linear-gradient(175deg,rgb(62, 165, 213) 0%, rgba(203,201,232,1) 100%);'
     },
     heading: {
       marginTop: 68,

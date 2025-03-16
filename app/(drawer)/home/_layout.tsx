@@ -21,9 +21,9 @@ export default function TabLayout() {
       >
       
       <Tabs.Screen
-        name="mybookings"
+        name="house"
         options={{
-          title: 'Bookings',
+          title: 'Home',
         }}
       />
       <Tabs.Screen
