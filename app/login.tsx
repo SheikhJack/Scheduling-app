@@ -2,9 +2,10 @@ import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import React from 'react';
 import { Image } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { useNavigation } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
 import { Link } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface RootStackParamList {
   navigate(arg0: string): void;
@@ -25,63 +26,77 @@ const login: React.FC<loginProps> = ({ login }) => {
   const navigation = useNavigation<RootStackParamList>();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.top}>
-        <Image source={require('../assets/images/busv2.png')} />
-      </View>
-      <Text style={styles.LoginText}>LOGIN TO CONTINUE</Text>
-      <View style={styles.inputDiv}>
-        <View style={styles.inputIconContainer}>
-          <MaterialIcons name='person' size={25} style={styles.person} />
-          <TextInput
-            placeholder='Username'
-            style={styles.input1}
-            underlineColorAndroid="transparent"
-          />
+    <LinearGradient
+      colors={['#3EA5D5', '#CBC9E8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.gradient} // ✅ Fix: Add style
+    >
+      <View style={styles.container}>
+        <View style={styles.top}>
+          <Image source={require('../assets/images/busv2.png')} />
         </View>
-        <View style={styles.inputIconContainer}>
-          <MaterialIcons name='key' size={25} style={styles.person} />
-          <TextInput
-            placeholder='Password'
-            style={styles.input1}
-            underlineColorAndroid="transparent"
-            secureTextEntry
-          />
+        <Text style={styles.LoginText}>LOGIN TO CONTINUE</Text>
+        <View style={styles.inputDiv}>
+          <View style={styles.inputIconContainer}>
+            <MaterialIcons name='person' size={25} style={styles.person} />
+            <TextInput
+              placeholder='Username'
+              style={styles.input1}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+          <View style={styles.inputIconContainer}>
+            <MaterialIcons name='key' size={25} style={styles.person} />
+            <TextInput
+              placeholder='Password'
+              style={styles.input1}
+              underlineColorAndroid="transparent"
+              secureTextEntry
+            />
+          </View>
         </View>
-      </View>
-      <View style={styles.tickInputDiv}>
-        <View style={styles.Checkbox}>
-          <BouncyCheckbox
-            unFillColor="#FFFFFF"
-            iconStyle={{ borderColor: "red" }}
-            innerIconStyle={{ borderWidth: 2 }}
-          />
-          <Text style={styles.rememberMeText}>Remember Me</Text>
+        <View style={styles.tickInputDiv}>
+          <View style={styles.Checkbox}>
+            <View>
+              <BouncyCheckbox
+                unFillColor="#FFFFFF"
+                iconStyle={{ borderColor: "red" }}
+                innerIconStyle={{ borderWidth: 2, }}
+              />
+            </View>
+            <View>
+            <Text style={styles.rememberMeText}>Remember Me</Text>
+            </View>
+          </View>
+          <Text style={styles.checkboxText}>Forgot Password</Text>
         </View>
-        <Text style={styles.checkboxText}>Forgot Password</Text>
+        <Pressable style={styles.button}
+        >
+          <Link href='/home/house' style={styles.buttonText}>LOGIN</Link>
+        </Pressable>
+        <Pressable
+          onPress={() => router.push('/register')}
+        >
+          <Text style={styles.createAccText}>Have an account?{""}{""}{""}{""}
+            <Text style={styles.defaultText}>Create An Account</Text>
+          </Text>
+        </Pressable>
       </View>
-      <Pressable style={styles.button}
-      >
-        <Link href='/home/house' style={styles.buttonText}>LOGIN</Link>
-      </Pressable>
-      <Pressable
-        onPress={() => navigation.navigate('createAccount')}
-      >
-        <Text style={styles.createAccText}>Have an account?{""}{""}{""}{""}
-          <Link href={'../components/register'} style={styles.defaultText}>Create An Account</Link>
-        </Text>
-      </Pressable>
-    </View>
+    </LinearGradient>
   )
 }
 
 export default login
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);'
+    // backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);'
   },
   top: {
     justifyContent: 'center',
@@ -122,7 +137,9 @@ const styles = StyleSheet.create({
   },
 
   Checkbox: {
-    alignItems:'center',
+    flexDirection: "row",
+    alignItems: 'center',
+    width: 110,
     justifyContent: 'center'
   },
 
@@ -147,7 +164,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFFFFF',
     margin: 0,
-    padding:0,
+    padding: 0,
 
   },
   inputContainer: {

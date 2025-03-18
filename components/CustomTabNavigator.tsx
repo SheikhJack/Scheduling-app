@@ -68,8 +68,11 @@ const CustomTab: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation
     switch (routeName) {
         case "house":
       return <AntDesign name="home" size={24} color={color} />
+      case "payments":
+        return <AntDesign name="creditcard" size={24} color={color} />;
+      
       case "profile":
-        return <AntDesign name="profile" size={24} color={color} />;
+        return <AntDesign name="user" size={24} color={color} />;
       
     }
   }

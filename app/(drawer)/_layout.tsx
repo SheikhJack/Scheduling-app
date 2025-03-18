@@ -2,20 +2,39 @@ import React from 'react';
 import { Drawer } from 'expo-router/drawer';
 import { AntDesign, FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation, useRouter } from 'expo-router';
-import CustomDrawerContent from '@/components/CustomDrawerContent';
+import CustomDrawerContent from '../../components/CustomDrawerContent';
+import { Image, Pressable, Text, View } from 'react-native';
 
 
 
 
 
 
- function DrawerLayout() {
+function DrawerLayout() {
 
   const router = useRouter();
 
   return (
     <Drawer
       screenOptions={{
+        headerRight: () => (
+          <Pressable onPress={() => console.log('Profile Clicked')}>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{fontSize: 15, fontWeight: 900, color: '#ffffff'}}>Hi Kido</Text>
+              <Image
+                source={require('../../assets/images/potrait.jpg')}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 100,
+                  marginRight: 15,
+                  marginLeft: 5
+                }}
+              />
+            </View>
+
+          </Pressable>
+        ),
         headerTitle: () => null,
         headerStyle: {
           backgroundColor: '#3ea5d5',
@@ -61,7 +80,7 @@ import CustomDrawerContent from '@/components/CustomDrawerContent';
           title: 'Generate-Invoive',
           drawerIcon: ({ focused, color, size }) => (
             <Ionicons
-              name={focused ? 'file-tray-full' : 'file-tray-full-outline'} 
+              name={focused ? 'file-tray-full' : 'file-tray-full-outline'}
               color={color}
               size={24}
             />
@@ -74,7 +93,7 @@ import CustomDrawerContent from '@/components/CustomDrawerContent';
           title: 'My Bookings',
           drawerIcon: ({ focused, color, size }) => (
             <Ionicons
-              name={focused ? 'book' : 'book-outline'} 
+              name={focused ? 'book' : 'book-outline'}
               color={color}
               size={24}
             />
@@ -87,7 +106,7 @@ import CustomDrawerContent from '@/components/CustomDrawerContent';
           title: 'Settings',
           drawerIcon: ({ focused, color, size }) => (
             <Ionicons
-              name={focused ? 'settings' : 'settings-outline'} 
+              name={focused ? 'settings' : 'settings-outline'}
               color={color}
               size={24}
             />

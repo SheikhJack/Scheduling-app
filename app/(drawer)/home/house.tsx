@@ -1,7 +1,7 @@
-import Card from '@/components/PopularCard';
-import { news } from '@/constants/data';
-import { destinations } from '@/constants/data';
-import { WhatsNewCard } from '@/components/WhatsNewCard';
+import Card from '../../../components/PopularCard';
+import { news } from '../../../constants/data';
+import { destinations } from '../../../constants/data';
+import { WhatsNewCard } from '../../../components/WhatsNewCard';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import React, { useRef } from 'react';
@@ -15,9 +15,9 @@ import {
   StatusBar,
   TextInput,
   Pressable,
+  SafeAreaView,
   FlatList
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
