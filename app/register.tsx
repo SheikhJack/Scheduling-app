@@ -28,10 +28,10 @@ const login: React.FC<loginProps> = ({ login }) => {
 
   return (
     <LinearGradient
-      colors={['#3EA5D5', '#CBC9E8']}
+      colors={['#3EA5D5', '#FFFFFF']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
-      style={styles.gradient} // ✅ Fix: Add style
+      style={styles.gradient} 
     >
       <View style={styles.container}>
         <View style={styles.top}>

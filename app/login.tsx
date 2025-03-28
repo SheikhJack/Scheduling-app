@@ -3,7 +3,6 @@ import React from 'react';
 import { Image } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { router, useNavigation } from 'expo-router';
-import { Link } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -27,10 +26,10 @@ const login: React.FC<loginProps> = ({ login }) => {
 
   return (
     <LinearGradient
-      colors={['#3EA5D5', '#CBC9E8']}
+      colors={['#3EA5D5', '#FFFFFF']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
-      style={styles.gradient} // ✅ Fix: Add style
+      style={styles.gradient}
     >
       <View style={styles.container}>
         <View style={styles.top}>
@@ -61,25 +60,26 @@ const login: React.FC<loginProps> = ({ login }) => {
             <View>
               <BouncyCheckbox
                 unFillColor="#FFFFFF"
-                iconStyle={{ borderColor: "red" }}
-                innerIconStyle={{ borderWidth: 2, }}
+                iconStyle={{ borderColor: "#3EA5D5" }}
+                innerIconStyle={{ borderWidth: 1, }}
               />
             </View>
             <View>
-            <Text style={styles.rememberMeText}>Remember Me</Text>
+              <Text style={styles.rememberMeText}>Remember Me</Text>
             </View>
           </View>
           <Text style={styles.checkboxText}>Forgot Password</Text>
         </View>
         <Pressable style={styles.button}
+          onPress={() => router.push('/(drawer)/home/house')}
         >
-          <Link href='/home/house' style={styles.buttonText}>LOGIN</Link>
+          <Text style={styles.buttonText}>LOGIN</Text>
         </Pressable>
         <Pressable
           onPress={() => router.push('/register')}
         >
-          <Text style={styles.createAccText}>Have an account?{""}{""}{""}{""}
-            <Text style={styles.defaultText}>Create An Account</Text>
+          <Text style={styles.createAccText}>
+            Create an account
           </Text>
         </Pressable>
       </View>
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   defaultText: {
     marginLeft: 5,
     fontWeight: 'bold',
-    color: "#FFFFFF"
+    color: "grey"
   },
   key: {
 

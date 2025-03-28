@@ -28,10 +28,10 @@ const Welcome: React.FC<WelcomeProps> = ({ login }) => {
     <>
       <Stack.Screen options={{ headerShown: false }} />
       <LinearGradient
-        colors={['#3EA5D5', '#CBC9E8']}
+        colors={['#3EA5D5', '#FFFFFF']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={styles.gradient} // ✅ Fix: Add style
+        style={styles.gradient}
       >
         <SafeAreaView style={styles.container}>
           <StatusBar translucent backgroundColor="transparent" />
@@ -41,10 +41,8 @@ const Welcome: React.FC<WelcomeProps> = ({ login }) => {
               <Logo height={286} width={286} />
             </View>
           </View>
-
           <Text style={styles.welcomeText}>WELCOME TO I-RANK</Text>
           <Text style={styles.searchText}>SEARCH FOR THE SAFEST DESTINATIONS</Text>
-
           <Pressable style={styles.button} onPress={() => router.push('/login')}>
             <Text style={styles.buttonText}>GET STARTED</Text>
           </Pressable>
@@ -58,12 +56,12 @@ export default Welcome;
 
 const styles = StyleSheet.create({
   gradient: {
-    flex: 1, 
+    flex: 1,
   },
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center', 
+    justifyContent: 'center',
   },
   heading: {
     marginBottom: 10,
@@ -75,13 +73,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 12, 
+    marginBottom: 12,
   },
   searchText: {
     color: '#0E0E0E',
     fontWeight: 'bold',
     fontSize: 13,
-    marginBottom: 30, 
+    marginBottom: 30,
     textAlign: 'center',
   },
   button: {

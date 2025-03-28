@@ -2,10 +2,7 @@ import Card from '../../../components/PopularCard';
 import { news } from '../../../constants/data';
 import { destinations } from '../../../constants/data';
 import { WhatsNewCard } from '../../../components/WhatsNewCard';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import React, { useRef } from 'react';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import {
   Image,
   Text,
@@ -18,128 +15,191 @@ import {
   SafeAreaView,
   FlatList
 } from 'react-native';
-
+import { LinearGradient } from 'expo-linear-gradient';
+import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet';
+import { useCallback, useMemo, useRef } from 'react';
 
 
 
 export default function HomeScreen() {
 
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
+
+  const snapPoints = useMemo(() => ['50', '75', '90'], [])
+
+
+
+  const handleSheetChanges = useCallback(() => {
+    console.log('handleSheetChanges')
+  }, [])
+
+  const handleSnapPress = useCallback(() => {
+    bottomSheetRef.current?.present()
+  }, [])
+
 
 
   return (
-    <ScrollView style={styles.scrollView}>
-      <SafeAreaView style={styles.Container}>
-        <View style={styles.statusBarBackground}>
-          <StatusBar
-            translucent={true}
-            backgroundColor="transparent"
-          />
-        </View>
-        <View style={styles.Container}>
-          <View style={styles.middlePart}>
-            <Text style={styles.middlePartText}>Where do you want to go?</Text>
-            <View style={styles.searchContainer}>
-              <View style={styles.innerContainer}>
-                <Text style={styles.fromText}>From</Text>
-                <View style={styles.inputIconContainer}>
-                  <MaterialIcons name='search' size={30} style={styles.person} />
-                  <TextInput
-                    placeholder='Search'
-                    style={styles.input1} />
+    <BottomSheetModalProvider>
+      <LinearGradient
+        colors={['#3EA5D5', '#CBC9E8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.gradient}
+      >
+
+        <ScrollView style={styles.scrollView}
+          keyboardShouldPersistTaps="handled">
+          <SafeAreaView style={styles.Container}>
+            <View style={styles.statusBarBackground}>
+              <StatusBar
+                translucent={true}
+                backgroundColor="transparent"
+              />
+            </View>
+            <View style={styles.Container}>
+              <View style={styles.middlePart}>
+                <Text style={styles.middlePartText}>Where do you want to go?</Text>
+                <LinearGradient
+                  colors={['#2981aa', '#293846']}
+                  start={{ x: 0, y: 1 }}
+                  end={{ x: 1, y: 1 }}
+                  // style={styles.gradient} 
+                  style={styles.searchContainer}
+                >
+                  <View style={styles.searchContainer}>
+                    <View style={styles.innerContainer}>
+                      <Text style={styles.fromText}>From</Text>
+                      <View style={styles.inputIconContainer}>
+                        <MaterialIcons name='search' size={30} style={styles.person} />
+                        <TextInput
+                          placeholder='Search'
+                          style={styles.input1} />
+                      </View>
+                      <Text style={styles.toText}>To</Text>
+                      <View style={styles.inputIconContainer}>
+                        <MaterialIcons name='search' size={30} style={styles.person} />
+                        <TextInput
+                          placeholder='Search'
+                          style={styles.input1} />
+                      </View>
+                    </View>
+                  </View>
+                </LinearGradient>
+                <View style={styles.search}>
+                  <Pressable style={styles.button}
+                    onPress={handleSnapPress}
+                  >
+                    <Text style={styles.buttonText}>SEARCH</Text>
+                  </Pressable>
                 </View>
-                <Text style={styles.toText}>To</Text>
-                <View style={styles.inputIconContainer}>
-                  <MaterialIcons name='search' size={30} style={styles.person} />
-                  <TextInput
-                    placeholder='Search'
-                    style={styles.input1} />
+
+              </View>
+              <View style={styles.fouthPart1}>
+
+              </View>
+              <View style={styles.thirdPart}>
+                <View style={styles.thirdPartText}>
+                  <Text style={styles.popularText}>POPULAR DESTINATIONS</Text>
+                  <Text style={styles.viewAllText}>View All</Text>
                 </View>
               </View>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.scrollContent}>
+                {destinations.map((destination, index) => (
+                  <Card key={index} item={destination} />
+                ))}
+              </ScrollView>
+              <View style={styles.fouthPart}>
+
+              </View>
+              <View style={styles.firthPart}>
+                <Pressable>
+                  <Text style={styles.whatsNewText}>WHAT'S NEW</Text>
+                </Pressable>
+                <Pressable>
+                  <Text style={styles.discoverText}>Discover Buses and routes</Text>
+                </Pressable>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.scrollContent}>
+                  {news.map((destination, index) => (
+                    <WhatsNewCard key={index} item={destination} />
+                  ))}
+                </ScrollView>
+              </View>
+              <View style={styles.fifthPart}>
+
+              </View>
+              <View style={styles.sixthPart}>
+                <Text style={styles.sixthtext}>Reciept History</Text>
+                <View style={[styles.reciept, styles.elevation]}>
+                  <View style={styles.recieptHead}>
+                    {/* reciept head */}
+                    <Text style={styles.payment}>Payment Total</Text>
+                    <Text style={styles.pay}>P360.00</Text>
+                  </View>
+                  <View style={styles.date}>
+                    <Text style={styles.ddrta}>Date</Text>
+                    <Text style={styles.details}>31 Dec 23</Text>
+                  </View>
+                  <View style={styles.date}>
+                    <Text style={styles.ddrta}>Details</Text>
+                    <Text style={styles.details}>Kealeboga K Mosate</Text>
+                  </View>
+                  <View style={styles.date}>
+                    <Text style={styles.ddrta}>Reference Number</Text>
+                    <Text style={styles.details}>AO6987456</Text>
+                  </View>
+                  <View style={styles.date}>
+                    <Text style={styles.ddrta}>Total Payment</Text>
+                    <Text style={styles.details}>P340</Text>
+                  </View>
+                  <View style={styles.date}>
+                    <Text style={styles.ddrta}>App Fee</Text>
+                    <Text style={styles.details}>P20.00</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 5, textAlign: 'center', color: 'white' }}>Generate PDF</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.search}>
-            <Pressable style={styles.button}
+            <View style={styles.fifthPart}>
+
+            </View>
+            <View >
+            </View>
+            <BottomSheetModal
+              ref={bottomSheetRef}
+              snapPoints={snapPoints}
+              onChange={handleSheetChanges}
+              backgroundStyle={{ backgroundColor: '#D9D9D9' }}
+              index={1}
             >
-              <Text style={styles.buttonText}>SEARCH</Text>
-            </Pressable>
-          </View>
-          <View style={styles.thirdPart}>
-            <View style={styles.thirdPartText}>
-              <Text style={styles.popularText}>POPULAR DESTINATIONS</Text>
-              <Text style={styles.viewAllText}>View All</Text>
-            </View>
-          </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.scrollContent}>
-            {destinations.map((destination, index) => (
-              <Card key={index} item={destinations} />
-            ))}
-          </ScrollView>
-          <View style={styles.fouthPart}>
-
-          </View>
-          <View style={styles.firthPart}>
-            <Pressable>
-              <Text style={styles.whatsNewText}>What's New</Text>
-            </Pressable>
-            <Pressable>
-              <Text style={styles.discoverText}>Discover Buses and routes</Text>
-            </Pressable>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.scrollContent}>
-              {news.map((destination, index) => (
-                <WhatsNewCard key={index} item={news} />
-              ))}
-            </ScrollView>
-          </View>
-          <View style={styles.fifthPart}>
-
-          </View>
-          <View style={styles.sixthPart}>
-            <Text style={styles.sixthtext}>Reciept History</Text>
-            <View style={[styles.reciept, styles.elevation]}>
-              <View style={styles.recieptHead}>
-                {/* reciept head */}
-                <Text style={styles.payment}>Payment Total</Text>
-                <Text style={styles.pay}>P360.00</Text>
-              </View>
-              <View style={styles.date}>
-                <Text style={styles.ddrta}>Date</Text>
-                <Text style={styles.details}>31 Dec 23</Text>
-              </View>
-              <View style={styles.date}>
-                <Text style={styles.ddrta}>Details</Text>
-                <Text style={styles.details}>Kealeboga K Mosate</Text>
-              </View>
-              <View style={styles.date}>
-                <Text style={styles.ddrta}>Reference Number</Text>
-                <Text style={styles.details}>AO6987456</Text>
-              </View>
-              <View style={styles.date}>
-                <Text style={styles.ddrta}>Total Payment</Text>
-                <Text style={styles.details}>P340</Text>
-              </View>
-              <View style={styles.date}>
-                <Text style={styles.ddrta}>App Fee</Text>
-                <Text style={styles.details}>P20.00</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
-
+              <BottomSheetView style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 10 }}>
+                <ScrollView style={{width: '100%'}}>
+                  <View style={{ height: 156, backgroundColor: '#ffffff', alignItems:'center', borderRadius: 10}}>
+                    <Text>Minimal Test</Text>
+                  </View>
+                </ScrollView>
+              </BottomSheetView>
+            </BottomSheetModal>
+          </SafeAreaView>
+        </ScrollView >
+      </LinearGradient>
+    </BottomSheetModalProvider>
   );
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   scrollView: {
     flexDirection: 'column',
-    backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);',
+    // backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);',
   },
   statusBarBackground: {
     backgroundColor: '#3ea5d5',
@@ -148,7 +208,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);',
+    // backgroundColor: 'linear-gradient(175deg, rgba(62,165,213,1) 0%, rgba(203,201,232,1) 100%);',
 
   },
   topBar: {
@@ -183,6 +243,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     marginLeft: 20,
+    marginTop: 20,
     fontSize: 16,
     fontWeight: 'bold',
     color: '#FFFFFF'
@@ -190,7 +251,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     height: 286,
     width: 334,
-    backgroundColor: '#293846',
+    // backgroundColor: '#293846',
     margin: 'auto',
     borderRadius: 15
   },
@@ -251,20 +312,20 @@ const styles = StyleSheet.create({
   },
   search: {
     margin: 'auto',
-    marginTop: -40,
+    marginTop: -20,
     height: 66,
   },
   thirdPart: {
-
+    marginTop: 60
   },
   thirdPartText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
-    marginTop: 75
+    padding: 10,
+    marginTop: 45
   },
   popularText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#FFFFFF'
   },
@@ -276,6 +337,16 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 5,
     paddingVertical: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 10
+    },
+    shadowOpacity: .3,
+    textShadowRadius: 20
 
   },
   inputIconContainer: {
@@ -294,14 +365,15 @@ const styles = StyleSheet.create({
     color: 'grey'
   },
   fouthPart: {
-    margin: 36,
-    borderWidth: 1
+    margin: 16,
+    borderWidth: 1,
+    borderColor: 'lightgrey',
   },
   firthPart: {
     flexDirection: 'column',
   },
   whatsNewText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#FFFFFF',
     marginLeft: 15,
@@ -315,7 +387,9 @@ const styles = StyleSheet.create({
   },
   fifthPart: {
     margin: 16,
-    borderWidth: 1
+    borderWidth: 1,
+    borderColor: 'lightgrey'
+
   },
   sixthtext: {
     marginBottom: 6,
@@ -342,6 +416,13 @@ const styles = StyleSheet.create({
   },
   sixthPart: {
     marginBottom: 46,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 5,
+      height: 10
+    },
+    shadowOpacity: .3,
+    textShadowRadius: 20
   },
   recieptHead: {
     flex: 1,
@@ -363,11 +444,14 @@ const styles = StyleSheet.create({
   },
   ddrta: {
     fontSize: 12,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'grey'
   },
   details: {
     fontSize: 10,
-    fontWeight: '300'
+    fontWeight: '300',
+    color: 'grey'
+
   },
   drawer: {
     backgroundColor: '#fff',
@@ -386,4 +470,11 @@ const styles = StyleSheet.create({
     color: '#1A526C',
     marginTop: 20,
   },
+  fouthPart1: {
+    marginLeft: 16,
+    marginRight: 16,
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+    bottom: -68
+  }
 });

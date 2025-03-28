@@ -13,13 +13,13 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
-<Tabs
+    <Tabs
       screenOptions={{
         headerShown: false, // Hide header inside tabs
       }}
       tabBar={(props) => <CustomTab {...props} />}
-      >
-      
+    >
+
       <Tabs.Screen
         name="house"
         options={{

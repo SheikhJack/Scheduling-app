@@ -1,7 +1,15 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import React from 'react'
 
-export const WhatsNewCard = ({ item }) => {
+
+interface CardProps {
+    item: {
+      title: string;
+      description: string;
+      
+    };
+  }
+
+export const WhatsNewCard = ({ item }: CardProps) => {
     return (
         <TouchableOpacity>
             <View style={styles.card}>
@@ -9,7 +17,7 @@ export const WhatsNewCard = ({ item }) => {
                     <Image source={require('../assets/images/shakawe.jpeg')} style={styles.image} />
                     <View style={styles.text}>
                         <Text style={styles.textText}>{item.title}</Text>
-                        <Text >{item.description}</Text>
+                        <Text style={styles.textSmall}>{item.description}</Text>
                     </View>
                 </View>
             </View>
@@ -21,8 +29,7 @@ export const WhatsNewCard = ({ item }) => {
 
 
 const styles = StyleSheet.create({
-    card: {
-       
+    card: {   
         width: 84,
         height: 143,
         backgroundColor: '#FFFFFF',
@@ -43,12 +50,11 @@ const styles = StyleSheet.create({
         height: 92,
     },
     image: {
-        width: 78,
-        height: 66,
+        width: 80,
+        height: 82,
         margin: 2,
         resizeMode: 'cover',
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
+        borderRadius: 15
 
     },
     text: {
@@ -57,9 +63,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     textText:{
-        fontSize: 15,
-        fontWeight: 'bold'
+        fontSize: 10,
+        fontWeight: 'bold',
+        marginLeft: 6,
+        color: 'grey'
     },
+    textSmall:{
+        fontSize: 9,
+        fontWeight: 'regular',
+        marginLeft: 6
+
+    }
 
 })
 

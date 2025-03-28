@@ -1,12 +1,22 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-export default function Card({ item }) {
+
+interface CardProps {
+    item: {
+      startLocation: string;
+      startTime: string;
+      endLocation: string;
+      endTime: string;
+    };
+  }
+
+export default function Card({ item }: CardProps) {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity >
             <View style={styles.card}>
                 <View style={styles.subCard}>
-                    <Image source={require('../assets/images/jh.png')} style={styles.image} />
+                    <Image source={require('../assets/images/jhz.jpg')} style={styles.image} />
                     <View style={styles.text}>
                         <Text style={styles.textText}>{item.startLocation}</Text>
                         <Text >{item.startTime}</Text>
@@ -23,10 +33,9 @@ export default function Card({ item }) {
 
 const styles = StyleSheet.create({
     card: {
-       
         width: 255,
         height: 120,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#ffffff',
         borderRadius: 15,
         overflow: 'hidden',
         marginRight: 10, // Adds spacing between cards
@@ -38,6 +47,7 @@ const styles = StyleSheet.create({
     },
     subCard: {
         flexDirection: 'row',
+        backgroundColor: 'transparent',
         gap: 20,
         justifyContent: 'space-between',
         width: 150,
@@ -46,18 +56,22 @@ const styles = StyleSheet.create({
     image: {
         width: 150,
         height: 118,
-        left: 5,
         resizeMode: 'cover',
+        borderRadius: 15,
+        margin: 1
     },
     text: {
         flexDirection: 'column',
         marginTop: 15,
         fontSize: 10,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        alignItems:'center',
+        marginLeft: -5
     },
     textText:{
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'grey'
     },
 
 })
