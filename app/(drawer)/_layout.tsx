@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Drawer } from 'expo-router/drawer';
 import { AntDesign, FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation, useRouter } from 'expo-router';
 import CustomDrawerContent from '../../components/CustomDrawerContent';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Animated, Image, Pressable, Text, View } from 'react-native';
 
 
 
@@ -13,6 +13,24 @@ import { Image, Pressable, Text, View } from 'react-native';
 function DrawerLayout() {
 
   const router = useRouter();
+  const scrollY = useRef(new Animated.Value(0)).current;
+  const [hideHeader, setHideHeader] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHideHeader(true);
+    }, 3000); // Hide after 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const headerTranslate = scrollY.interpolate({
+    inputRange: [0, 50], // Scroll distance
+    outputRange: [0, -100], // Move up by 100 pixels
+    extrapolate: 'clamp',
+  });
+
+
 
   return (
     <Drawer

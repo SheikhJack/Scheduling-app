@@ -2,7 +2,7 @@ import Card from '../../../components/PopularCard';
 import { news } from '../../../constants/data';
 import { destinations } from '../../../constants/data';
 import { WhatsNewCard } from '../../../components/WhatsNewCard';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import {
   Image,
   Text,
@@ -16,7 +16,7 @@ import {
   FlatList
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BottomSheetModal, BottomSheetModalProvider, BottomSheetView } from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetModalProvider, BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useCallback, useMemo, useRef } from 'react';
 
 
@@ -24,13 +24,12 @@ import { useCallback, useMemo, useRef } from 'react';
 export default function HomeScreen() {
 
   const bottomSheetRef = useRef<BottomSheetModal>(null);
-
-  const snapPoints = useMemo(() => ['50', '75', '90'], [])
+  const snapPoints = useMemo(() => ['50', '75', '95'], [])
 
 
 
   const handleSheetChanges = useCallback(() => {
-    console.log('handleSheetChanges')
+
   }, [])
 
   const handleSnapPress = useCallback(() => {
@@ -178,13 +177,105 @@ export default function HomeScreen() {
               backgroundStyle={{ backgroundColor: '#D9D9D9' }}
               index={1}
             >
-              <BottomSheetView style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: 10 }}>
-                <ScrollView style={{width: '100%'}}>
-                  <View style={{ height: 156, backgroundColor: '#ffffff', alignItems:'center', borderRadius: 10}}>
-                    <Text>Minimal Test</Text>
+              <BottomSheetScrollView style={{ display: 'flex', flexDirection: 'column', width: '100%' }}
+              contentContainerStyle={{alignItems: 'center'}}
+              >
+                <View style={{ height: 156, backgroundColor: '#ffffff', alignItems: 'flex-start', borderRadius: 10, padding: 13 }}>
+                  <View style={{ flexDirection: 'row', gap: 11 }}>
+                    <Ionicons name='bus' size={30} />
+                    <Text style={{ color: "#817878", fontWeight: 'bold', fontSize: 20 }}>TJ MOTLOGELWA</Text>
                   </View>
-                </ScrollView>
-              </BottomSheetView>
+                  <View style={{ flexDirection: 'row', gap: 54, marginTop: 8 }}>
+                    <Text style={{color:'#817F7F'}}>From: Selibe Phikwe</Text>
+                    <Text style={{color:'#817F7F'}}>To: Gaborone</Text>
+                  </View>
+                  <Text style={{color:'#817F7F'}}>Ticket Price: P150.00</Text>
+                  <View style={{ flexDirection: 'row', gap: 90 }}>
+                    <Text style={{color:'#817F7F'}}>Time: 08.00am</Text>
+                    <Text style={{color:'#817F7F'}}>2 Dec 2024</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 65 }}>
+                    <Text style={{color:'#817F7F'}}>Distance: 359.6km</Text>
+                    <Text style={{color:'#817F7F'}}>Estimated Time: 4hrs</Text>
+                  </View>
+                </View>
+                <View style={{ height: 156, backgroundColor: '#ffffff', alignItems: 'flex-start', borderRadius: 10, padding: 13, marginTop: 13 }}>
+                  <View style={{ flexDirection: 'row', gap: 11 }}>
+                    <Ionicons name='bus' size={30} />
+                    <Text style={{ color: "#817878", fontWeight: 'bold', fontSize: 20 }}>Seabelo's Express</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 54, marginTop: 8 }}>
+                    <Text style={{color:'#817F7F'}}>From: Selibe Phikwe</Text>
+                    <Text style={{color:'#817F7F'}}>To: Gaborone</Text>
+                  </View>
+                  <Text style={{color:'#817F7F'}}>Ticket Price: P150.00</Text>
+                  <View style={{ flexDirection: 'row', gap: 90 }}>
+                    <Text style={{color:'#817F7F'}}>Time: 08.00am</Text>
+                    <Text style={{color:'#817F7F'}}>2 Dec 2024</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 65 }}>
+                    <Text style={{color:'#817F7F'}}>Distance: 359.6km</Text>
+                    <Text style={{color:'#817F7F'}}>Estimated Time: 4hrs</Text>
+                  </View>
+                </View>
+                <View style={{ height: 156, backgroundColor: '#ffffff', alignItems: 'flex-start', borderRadius: 10, padding: 13, marginTop: 13 }}>
+                  <View style={{ flexDirection: 'row', gap: 11 }}>
+                    <Ionicons name='bus' size={30} />
+                    <Text style={{ color: "#817878", fontWeight: 'bold', fontSize: 20 }}>Gemsbok Travel</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 54, marginTop: 8 }}>
+                    <Text style={{color:'#817F7F'}}>From: Selibe Phikwe</Text>
+                    <Text style={{color:'#817F7F'}}>To: Gaborone</Text>
+                  </View>
+                  <Text>Ticket Price: P150.00</Text>
+                  <View style={{ flexDirection: 'row', gap: 90 }}>
+                    <Text style={{color:'#817F7F'}}>Time: 08.00am</Text>
+                    <Text style={{color:'#817F7F'}}>2 Dec 2024</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 65 }}>
+                    <Text style={{color:'#817F7F'}}>Distance: 359.6km</Text>
+                    <Text style={{color:'#817F7F'}}>Estimated Time: 4hrs</Text>
+                  </View>
+                </View>
+                <View style={{ height: 156, backgroundColor: '#ffffff', alignItems: 'flex-start', borderRadius: 10, padding: 13, marginTop: 13 }}>
+                  <View style={{ flexDirection: 'row', gap: 11 }}>
+                    <Ionicons name='bus' size={30} />
+                    <Text style={{ color: "#817878", fontWeight: 'bold', fontSize: 20 }}>TEE PEE TRAVEL</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 54, marginTop: 8 }}>
+                    <Text style={{color:'#817F7F'}}>From: Selibe Phikwe</Text>
+                    <Text style={{color:'#817F7F'}}>To: Gaborone</Text>
+                  </View>
+                  <Text style={{color:'#817F7F'}}>Ticket Price: P150.00</Text>
+                  <View style={{ flexDirection: 'row', gap: 90 }}>
+                    <Text style={{color:'#817F7F'}}>Time: 08.00am</Text>
+                    <Text style={{color:'#817F7F'}}>2 Dec 2024</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 65 }}>
+                    <Text style={{color:'#817F7F'}}>Distance: 359.6km</Text>
+                    <Text style={{color:'#817F7F'}}>Estimated Time: 4hrs</Text>
+                  </View>
+                </View>
+                <View style={{ height: 156, backgroundColor: '#ffffff', alignItems: 'flex-start', borderRadius: 10, padding: 13, marginTop: 13 }}>
+                  <View style={{ flexDirection: 'row', gap: 11 }}>
+                    <Ionicons name='bus' size={30} />
+                    <Text style={{ color: "#817878", fontWeight: 'bold', fontSize: 20 }}>JNG EXPRESS</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 54, marginTop: 8 }}>
+                    <Text style={{color:'#817F7F'}}>From: Selibe Phikwe</Text>
+                    <Text style={{color:'#817F7F'}}>To: Gaborone</Text>
+                  </View>
+                  <Text style={{color:'#817F7F'}}>Ticket Price: P150.00</Text>
+                  <View style={{ flexDirection: 'row', gap: 90 }}>
+                    <Text style={{color:'#817F7F'}}>Time: 08.00am</Text>
+                    <Text style={{color:'#817F7F'}}>2 Dec 2024</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', gap: 65 }}>
+                    <Text style={{color:'#817F7F'}}>Distance: 359.6km</Text>
+                    <Text style={{color:'#817F7F'}}>Estimated Time: 4hrs</Text>
+                  </View>
+                </View>
+              </BottomSheetScrollView>
             </BottomSheetModal>
           </SafeAreaView>
         </ScrollView >
